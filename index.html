@@ -19,29 +19,34 @@ z-index:1000;
 }
 .nav a{color:white;text-decoration:none;font-weight:bold}
 
+/* SEARCH */
+.search{padding:10px;text-align:center}
+.search input{width:90%;padding:10px}
+
+/* MARQUEE */
+.marquee{background:red;color:white;padding:8px}
+
 /* BANNER */
 .banner img{width:100%}
 
 /* HEADER */
-.header{text-align:center;background:#0a1f44;color:white;padding:20px}
+.header{text-align:center;background:#0a1f44;color:white;padding:15px}
 .header img{width:80px}
+
+/* JOB CARD */
+.job{background:white;margin:10px;padding:15px;border-radius:10px;box-shadow:0 0 10px #ccc}
+
+/* BUTTON */
+.btn{background:green;color:white;padding:10px;text-decoration:none;border-radius:5px;margin:5px;display:inline-block}
 
 /* VIDEOS */
 .videos{display:flex;overflow:auto;gap:10px;padding:10px}
 .videos img{width:250px;border-radius:10px}
 
-/* JOB CARD */
-.job{background:white;margin:10px;padding:15px;border-radius:10px;box-shadow:0 0 10px #ccc}
-.apply{background:green;color:white;padding:10px;text-decoration:none;border-radius:5px;display:inline-block;margin-top:10px}
-
-/* ADMIN */
-.admin{display:none;background:#222;color:white;padding:10px;text-align:center}
-input,textarea{width:90%;padding:10px;margin:5px}
-
 /* FOOTER */
 .footer{background:#111;color:white;text-align:center;padding:20px}
 
-/* WHATSAPP BUTTON */
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -53,7 +58,12 @@ border-radius:50%;
 font-size:20px;
 text-decoration:none;
 }
+
+/* ADMIN */
+.admin{display:none;background:#222;color:white;padding:10px;text-align:center}
+input,textarea{width:90%;padding:10px;margin:5px}
 </style>
+
 </head>
 
 <body>
@@ -61,9 +71,19 @@ text-decoration:none;
 <!-- NAV -->
 <div class="nav">
 <a href="#">Home</a>
-<a href="#jobs">Latest Jobs</a>
+<a href="#jobs">Jobs</a>
 <a href="#videos">Videos</a>
 <a href="#contact">Contact</a>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+<marquee>🔥 Jaipur Amazon Job | 🔥 JCB Company Hiring | 🔥 10th 12th Pass Jobs Available</marquee>
+</div>
+
+<!-- SEARCH -->
+<div class="search">
+<input type="text" placeholder="Search jobs...">
 </div>
 
 <!-- BANNER -->
@@ -76,6 +96,39 @@ text-decoration:none;
 <img src="logo.png">
 <h2>SS Solution Services</h2>
 <p>Private Job Updates</p>
+</div>
+
+<!-- FEATURED JOB -->
+<div class="job">
+<h3>🔥 Featured Job - Amazon Warehouse Jaipur</h3>
+<p>Salary: ₹16,000 - ₹20,000</p>
+</div>
+
+<!-- JOBS -->
+<div id="jobs">
+
+<div class="job">
+<h3>Amazon Warehouse – Jaipur</h3>
+<p>📍 Bagru Jaipur</p>
+<p>💰 Salary: ₹16k - ₹20k</p>
+<p>🎓 10th / 12th Pass</p>
+<p>🎂 Age: 18–40</p>
+<p>👨‍👩‍👧 Boys & Girls</p>
+
+<a href="https://form.svhrt.com/681c7ca1cc890b3d79363500" class="btn">Apply Form</a>
+<a href="https://wa.me/918078671637" class="btn">WhatsApp</a>
+</div>
+
+<div class="job">
+<h3>JCB Company – Jaipur</h3>
+<p>📍 Mahindra Bed Sheet Area</p>
+<p>💰 Salary: ₹15k - ₹21k</p>
+<p>🎓 10th / 12th / ITI / Diploma</p>
+
+<a href="https://form.svhrt.com/681c7ca1cc890b3d79363500" class="btn">Apply Form</a>
+<a href="https://wa.me/918078671637" class="btn">WhatsApp</a>
+</div>
+
 </div>
 
 <!-- VIDEOS -->
@@ -95,31 +148,46 @@ text-decoration:none;
 
 </div>
 
-<!-- JOBS -->
-<div id="jobs"></div>
+<!-- SHAYARI -->
+<div class="job">
+<h3>💔 Shayari</h3>
+<p>किसी से इतना भी प्यार मत करो कि वो आपकी आदत बन जाए...</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="footer">
+
+<p>📍 Address:<br>
+Rajasthan, Churu<br>
+Station Road, Nayabas<br>
+Shop No. 04
+</p>
+
+<iframe src="https://maps.google.com/maps?q=churu&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" height="200"></iframe>
+
+<p>📞 8078671637</p>
+<p>📧 sssolutionservices999@gmail.com</p>
+
+</div>
 
 <!-- ADMIN BUTTON -->
-<button onclick="showAdmin()" style="position:fixed;top:10px;right:10px;">⚙️</button>
+<button onclick="adminLogin()" style="position:fixed;top:10px;right:10px;">⚙️</button>
 
 <!-- ADMIN PANEL -->
 <div id="adminPanel" class="admin">
+
 <h3>Admin Panel</h3>
 
 <input type="text" id="title" placeholder="Job Title">
-<textarea id="desc" placeholder="Job Details (HTML allowed)"></textarea>
-
+<textarea id="desc" placeholder="Job Details"></textarea>
 <button onclick="addJob()">Add Job</button>
-</div>
 
-<!-- MAP -->
-<div style="margin:10px">
-<iframe src="https://maps.google.com/maps?q=jaipur&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="250"></iframe>
-</div>
+<br><br>
 
-<!-- FOOTER -->
-<div id="contact" class="footer">
-<p>WhatsApp: 8078671637</p>
-<p>Email: sssolutionservices999@gmail.com</p>
+<input type="text" id="videoLink" placeholder="YouTube Link">
+<button onclick="addVideo()">Add Video</button>
+
 </div>
 
 <!-- WHATSAPP -->
@@ -127,8 +195,8 @@ text-decoration:none;
 
 <script>
 
-function showAdmin(){
-let pass = prompt("Enter Password");
+function adminLogin(){
+let pass=prompt("Enter Password");
 if(pass=="1234"){
 document.getElementById("adminPanel").style.display="block";
 }else{
@@ -137,21 +205,33 @@ alert("Wrong Password");
 }
 
 function addJob(){
-let title = document.getElementById("title").value;
-let desc = document.getElementById("desc").value;
+let title=document.getElementById("title").value;
+let desc=document.getElementById("desc").value;
 
-let job = `
+let job=`
 <div class="job">
 <h3>${title}</h3>
-<div>${desc}</div>
+<p>${desc}</p>
 
-<a href="https://wa.me/918078671637" class="apply">Apply Now</a>
-<a href="https://form.svhrt.com/681c7ca1cc890b3d79363500" class="apply">Apply Form</a>
-
+<a href="https://form.svhrt.com/681c7ca1cc890b3d79363500" class="btn">Apply Form</a>
+<a href="https://wa.me/918078671637" class="btn">WhatsApp</a>
 </div>
 `;
 
-document.getElementById("jobs").insertAdjacentHTML("afterbegin", job);
+document.getElementById("jobs").insertAdjacentHTML("afterbegin",job);
+}
+
+function addVideo(){
+let link=document.getElementById("videoLink").value;
+let id=link.split("v=")[1]?.split("&")[0] || link.split("/").pop();
+
+let video=`
+<a href="${link}" target="_blank">
+<img src="https://img.youtube.com/vi/${id}/0.jpg">
+</a>
+`;
+
+document.getElementById("videos").insertAdjacentHTML("afterbegin",video);
 }
 
 </script>
