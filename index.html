@@ -7,48 +7,80 @@
 <style>
 body{margin:0;font-family:Arial;background:#f1f1f1}
 
-/* Banner */
+/* NAVBAR */
+.nav{
+background:#0a1f44;
+color:white;
+display:flex;
+justify-content:space-around;
+padding:12px;
+position:sticky;top:0;
+z-index:1000;
+}
+.nav a{color:white;text-decoration:none;font-weight:bold}
+
+/* BANNER */
 .banner img{width:100%}
 
-/* Header */
-.header{text-align:center;background:#0a1f44;color:white;padding:15px}
+/* HEADER */
+.header{text-align:center;background:#0a1f44;color:white;padding:20px}
 .header img{width:80px}
 
-/* Videos */
+/* VIDEOS */
 .videos{display:flex;overflow:auto;gap:10px;padding:10px}
 .videos img{width:250px;border-radius:10px}
 
-/* Job Card */
-.job{background:white;margin:10px;padding:15px;border-radius:10px}
+/* JOB CARD */
+.job{background:white;margin:10px;padding:15px;border-radius:10px;box-shadow:0 0 10px #ccc}
+.apply{background:green;color:white;padding:10px;text-decoration:none;border-radius:5px;display:inline-block;margin-top:10px}
 
-/* Button */
-.btn{background:green;color:white;padding:10px;text-decoration:none;border-radius:5px}
-
-/* Admin */
-.admin{background:#222;color:white;padding:10px;text-align:center}
+/* ADMIN */
+.admin{display:none;background:#222;color:white;padding:10px;text-align:center}
 input,textarea{width:90%;padding:10px;margin:5px}
 
-/* Footer */
+/* FOOTER */
 .footer{background:#111;color:white;text-align:center;padding:20px}
+
+/* WHATSAPP BUTTON */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+text-decoration:none;
+}
 </style>
 </head>
 
 <body>
 
-<!-- Banner -->
+<!-- NAV -->
+<div class="nav">
+<a href="#">Home</a>
+<a href="#jobs">Latest Jobs</a>
+<a href="#videos">Videos</a>
+<a href="#contact">Contact</a>
+</div>
+
+<!-- BANNER -->
 <div class="banner">
 <img src="banner.jpg">
 </div>
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="header">
 <img src="logo.png">
 <h2>SS Solution Services</h2>
 <p>Private Job Updates</p>
 </div>
 
-<!-- Videos -->
-<div class="videos">
+<!-- VIDEOS -->
+<div id="videos" class="videos">
+
 <a href="https://youtu.be/fksDJpjVM84" target="_blank">
 <img src="https://img.youtube.com/vi/fksDJpjVM84/0.jpg">
 </a>
@@ -60,93 +92,66 @@ input,textarea{width:90%;padding:10px;margin:5px}
 <a href="https://youtu.be/ASoxrra4U9s" target="_blank">
 <img src="https://img.youtube.com/vi/ASoxrra4U9s/0.jpg">
 </a>
+
 </div>
 
-<!-- Jobs -->
+<!-- JOBS -->
 <div id="jobs"></div>
 
-<!-- Admin Panel -->
-<div class="admin">
+<!-- ADMIN BUTTON -->
+<button onclick="showAdmin()" style="position:fixed;top:10px;right:10px;">⚙️</button>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="admin">
 <h3>Admin Panel</h3>
 
-<input type="password" id="pass" placeholder="Password">
-<button onclick="login()">Login</button>
-
-<div id="panel" style="display:none;">
 <input type="text" id="title" placeholder="Job Title">
-<textarea id="desc" placeholder="Job Details"></textarea>
+<textarea id="desc" placeholder="Job Details (HTML allowed)"></textarea>
+
 <button onclick="addJob()">Add Job</button>
 </div>
+
+<!-- MAP -->
+<div style="margin:10px">
+<iframe src="https://maps.google.com/maps?q=jaipur&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="250"></iframe>
 </div>
 
-<!-- Shayari -->
-<div class="job">
-<h3>💔 Shayari</h3>
-<p>किसी से इतना भी प्यार मत करो कि वो आपकी आदत बन जाए...</p>
-</div>
-
-<!-- Comments -->
-<div class="job">
-<h3>Comments</h3>
-<textarea id="comment" placeholder="Comment लिखो..."></textarea>
-<button onclick="addComment()">Post</button>
-<div id="comments"></div>
-</div>
-
-<!-- Footer -->
-<div class="footer">
+<!-- FOOTER -->
+<div id="contact" class="footer">
 <p>WhatsApp: 8078671637</p>
 <p>Email: sssolutionservices999@gmail.com</p>
 </div>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/918078671637"
-style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:50%;text-decoration:none;font-size:22px;">
-💬
-</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/918078671637" class="whatsapp">💬</a>
 
 <script>
 
-// LOGIN
-function login(){
-if(document.getElementById("pass").value=="1234"){
-document.getElementById("panel").style.display="block";
-alert("Login Success");
+function showAdmin(){
+let pass = prompt("Enter Password");
+if(pass=="1234"){
+document.getElementById("adminPanel").style.display="block";
 }else{
 alert("Wrong Password");
 }
 }
 
-// ADD JOB
 function addJob(){
-let title=document.getElementById("title").value;
-let desc=document.getElementById("desc").value;
+let title = document.getElementById("title").value;
+let desc = document.getElementById("desc").value;
 
-if(title=="" || desc==""){
-alert("Please fill all fields");
-return;
-}
+let job = `
+<div class="job">
+<h3>${title}</h3>
+<div>${desc}</div>
 
-let job = `<div class="job"><h3>${title}</h3><p>${desc}</p></div>`;
+<a href="https://wa.me/918078671637" class="apply">Apply Now</a>
+<a href="https://form.svhrt.com/681c7ca1cc890b3d79363500" class="apply">Apply Form</a>
 
-document.getElementById("jobs").innerHTML += job;
+</div>
+`;
 
-// clear fields
-document.getElementById("title").value="";
-document.getElementById("desc").value="";
-}
-
-// ADD COMMENT
-function addComment(){
-let c=document.getElementById("comment").value;
-
-if(c==""){
-alert("Write comment first");
-return;
-}
-
-document.getElementById("comments").innerHTML += "<p>"+c+"</p>";
-document.getElementById("comment").value="";
+document.getElementById("jobs").insertAdjacentHTML("afterbegin", job);
 }
 
 </script>
