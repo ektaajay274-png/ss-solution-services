@@ -5,73 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body {font-family: Arial; margin:0; background:#f5f5f5;}
+body{margin:0;font-family:Arial;background:#f1f1f1}
 
-.header {
-  background:#0a1f44;
-  color:white;
-  padding:20px;
-  text-align:center;
-}
+/* Banner */
+.banner img{width:100%}
 
-.job {
-  background:white;
-  margin:15px;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 0 10px #ccc;
-}
+/* Header */
+.header{text-align:center;background:#0a1f44;color:white;padding:15px}
+.header img{width:80px}
 
-.btn {
-  background:green;
-  color:white;
-  padding:10px;
-  text-decoration:none;
-  border-radius:5px;
-  display:inline-block;
-}
+/* Videos */
+.videos{display:flex;overflow:auto;gap:10px;padding:10px}
+.videos img{width:250px;border-radius:10px}
 
-.footer {
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:20px;
-}
+/* Job Card */
+.job{background:white;margin:10px;padding:15px;border-radius:10px}
+
+/* Button */
+.btn{background:green;color:white;padding:10px;text-decoration:none;border-radius:5px}
+
+/* Admin */
+.admin{background:#222;color:white;padding:10px;text-align:center}
+input,textarea{width:90%;padding:10px;margin:5px}
+
+/* Footer */
+.footer{background:#111;color:white;text-align:center;padding:20px}
 </style>
-
 </head>
 
 <body>
 
+<!-- Banner -->
+<div class="banner">
+<img src="banner.jpg">
+</div>
+
+<!-- Header -->
 <div class="header">
-<h1>SS Solution Services</h1>
-<p>Verified Private Job Updates</p>
+<img src="logo.png">
+<h2>SS Solution Services</h2>
+<p>Private Job Updates</p>
 </div>
 
+<!-- Videos -->
+<div class="videos">
+<a href="https://youtu.be/fksDJpjVM84" target="_blank">
+<img src="https://img.youtube.com/vi/fksDJpjVM84/0.jpg">
+</a>
+
+<a href="https://youtu.be/XpwsGgZbV_Y" target="_blank">
+<img src="https://img.youtube.com/vi/XpwsGgZbV_Y/0.jpg">
+</a>
+
+<a href="https://youtu.be/ASoxrra4U9s" target="_blank">
+<img src="https://img.youtube.com/vi/ASoxrra4U9s/0.jpg">
+</a>
+</div>
+
+<!-- Jobs -->
+<div id="jobs"></div>
+
+<!-- Admin Panel -->
+<div class="admin">
+<h3>Admin Panel</h3>
+
+<input type="password" id="pass" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<div id="panel" style="display:none;">
+<input type="text" id="title" placeholder="Job Title">
+<textarea id="desc" placeholder="Job Details"></textarea>
+<button onclick="addJob()">Add Job</button>
+</div>
+</div>
+
+<!-- Shayari -->
 <div class="job">
-<h2>Amazon Warehouse Job - Jaipur</h2>
-<p>Salary: ₹17,900</p>
-<p>Work: Packing, Scanning, Sorting</p>
-<a class="btn" href="https://form.svhrt.com/681c7ca1cc890b3d79363500">Apply Now</a>
+<h3>💔 Shayari</h3>
+<p>किसी से इतना भी प्यार मत करो कि वो आपकी आदत बन जाए...</p>
 </div>
 
+<!-- Comments -->
 <div class="job">
-<h2>JCB Auto Parts Job - Jaipur</h2>
-<p>Salary: ₹18,000 - ₹21,000</p>
-<p>Work: Helper / Production</p>
-<a class="btn" href="https://form.svhrt.com/681c7ca1cc890b3d79363500">Apply Now</a>
+<h3>Comments</h3>
+<textarea id="comment" placeholder="Comment लिखो..."></textarea>
+<button onclick="addComment()">Post</button>
+<div id="comments"></div>
 </div>
 
+<!-- Footer -->
 <div class="footer">
 <p>WhatsApp: 8078671637</p>
 <p>Email: sssolutionservices999@gmail.com</p>
 </div>
 
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/918078671637" 
-style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:50%;text-decoration:none;font-size:20px;">
+<a href="https://wa.me/918078671637"
+style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:50%;text-decoration:none;font-size:22px;">
 💬
 </a>
+
+<script>
+
+// LOGIN
+function login(){
+if(document.getElementById("pass").value=="1234"){
+document.getElementById("panel").style.display="block";
+alert("Login Success");
+}else{
+alert("Wrong Password");
+}
+}
+
+// ADD JOB
+function addJob(){
+let title=document.getElementById("title").value;
+let desc=document.getElementById("desc").value;
+
+if(title=="" || desc==""){
+alert("Please fill all fields");
+return;
+}
+
+let job = `<div class="job"><h3>${title}</h3><p>${desc}</p></div>`;
+
+document.getElementById("jobs").innerHTML += job;
+
+// clear fields
+document.getElementById("title").value="";
+document.getElementById("desc").value="";
+}
+
+// ADD COMMENT
+function addComment(){
+let c=document.getElementById("comment").value;
+
+if(c==""){
+alert("Write comment first");
+return;
+}
+
+document.getElementById("comments").innerHTML += "<p>"+c+"</p>";
+document.getElementById("comment").value="";
+}
+
+</script>
 
 </body>
 </html>
